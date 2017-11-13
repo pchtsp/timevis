@@ -261,3 +261,7 @@ body {
   margin-bottom: 5px;
   margin-top: 0;
 }
+
+.vis-item .vis-item-content {
+  padding:0;
+}

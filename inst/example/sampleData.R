@@ -9,8 +9,10 @@ dataBasic <- data.frame(
 
 # Template for world cup HTML of each item
 templateWC <- function(stage, team1, team2, score1, score2) {
+  rgbcolor <- sample(colors(), 1) %>% col2rgb() %>% as.vector() %>% paste0(collapse = ", ")
   sprintf(
-    '<table><tbody>
+    '<div style="background-color:rgb(%s);padding:0px;margin:0px;">
+    <table><tbody>
       <tr><td colspan="3"><em>%s</em></td></tr>
       <tr>
         <td>%s</td>
@@ -22,7 +24,8 @@ templateWC <- function(stage, team1, team2, score1, score2) {
         <th></th>
         <td><img src="flags/%s.png" width="31" height="20" alt="%s"></td>
       </tr>
-    </tbody></table>',
+    </tbody></table></div>',
+    rgbcolor,
     stage, team1, score1, score2, team2, gsub("\\s", "", tolower(team1)),
     team1, gsub("\\s", "", tolower(team2)), team2
   )
